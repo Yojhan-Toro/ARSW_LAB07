@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8080:8080"
+    networks:
+      - blueprints-net
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "5173:80"
+    environment:
+      - VITE_API_BASE=http://localhost:8080
+      - VITE_STOMP_BASE=http://localhost:8080
+    depends_on:
+      - backend
+    networks:
+      - blueprints-net
+
+networks:
+  blueprints-net:
+    driver: bridge

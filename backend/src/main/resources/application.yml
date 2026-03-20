@@ -1,0 +1,25 @@
+server:
+  port: 8080
+
+blueprints:
+  security:
+    issuer: blueprints-api
+
+    token-ttl-seconds: 3600
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    operations-sorter: method
+    tags-sorter: alpha
+  api-docs:
+    path: /v3/api-docs
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
